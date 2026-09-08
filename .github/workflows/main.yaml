@@ -24,13 +24,13 @@ jobs:
       - run: npm i
       - run: npm run build
 
-deploy:
+  deploy:
     needs: test-build
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        node-version: [16.x]
+        node-version: [18.x]
 
     steps:
       - name: Build app on VM
@@ -47,10 +47,10 @@ deploy:
             [ ! -d "${HOME}/senpro/533008/modul02/senpro-github-actions/" ] && 
             {
               echo "Repository has not been cloned. Cloning now...";
-            mkdir -p ~/senpro/533008/modul02/senpro-github-actions;
-            echo "Install Packages and Build Project";
-            npm install;
-            npm run build;
+              mkdir -p ~/senpro/533008/modul02/senpro-github-actions;
+              echo "Install Packages and Build Project";
+              npm install;
+              npm run build;
             } || {
               echo "Repository already exists. Building...";
               cd ~/senpro/533008/modul02/senpro-github-actions;
